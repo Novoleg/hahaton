@@ -1,0 +1,125 @@
+# описание deployment
+deployments:
+  replicaCount: 1
+  # можно создавать несколько контейнеров в pod
+  containers: {}
+  # - name: test-1
+  #   Отвечает за включение/отключение liveness и readiness проб. 
+  #   Пробы идут на uri /health
+  #   probe: false
+  #   Образ контейнера
+  #   image:
+  #     repository: nginx
+  #     pullPolicy: IfNotPresent
+  #     tag: "latest"
+  #   Переопределение команды запуска контейнера
+  #   command: []
+  #   Создание внутри контейнера переменных окружений с помощью ConfigMap и Secret
+  #   env: {}
+  #     foo: bar
+  #   secretEnv: {}
+  #     bar: foo
+  #   Указание ресурсов для контейнеров
+  #   resources: {}
+  #     limits:
+  #       cpu: 100m
+  #       memory: 128Mi
+  #     requests:
+  #       cpu: 100m
+  #       memory: 128Mi
+  # init контейнеров тоже можно создавать несколько
+  initContainers: {}
+  # - name: 
+  #   image:
+  #     repository: busybox
+  #     pullPolicy: IfNotPresent
+  #     tag: "latest"
+  #   command: []
+  #   resources: {}
+  #     limits:
+  #       cpu: 100m
+  #       memory: 128Mi
+  #     requests:
+  #       cpu: 100m
+  #       memory: 128Mi
+
+  affinity: {}
+    # nodeAffinity:
+    #   requiredDuringSchedulingIgnoredDuringExecution:
+    #     nodeSelectorTerms:
+    #     - matchExpressions:
+    #       - key: kubernetes.io/hostname
+    #         operator: In
+    #         values:
+    #         - docker-desktop
+    # podAntiAffinity:
+    #   preferredDuringSchedulingIgnoredDuringExecution:
+    #   - weight: 10
+    #     podAffinityTerm:
+    #       labelSelector:
+    #         matchExpressions:
+    #         - key: app
+    #           operator: In
+    #           values:
+    #           - my-app
+    #   topologyKey: topology.kubernetes.io/zone
+  nodeSelector: {}
+    # durost.io: "durost"
+  tolerations: {}
+    # anime.io: "anime"
+  
+  imagePullSecrets: []
+
+  serviceAccount:
+    # Specifies whether a service account should be created
+    create: true
+    # Annotations to add to the service account
+    annotations: {}
+    # The name of the service account to use.
+    # If not set and create is true, a name is generated using the fullname template
+    name: "test"
+
+  podAnnotations: {}
+
+  podSecurityContext: {}
+    # fsGroup: 2000
+
+  securityContext: {}
+    # capabilities:
+    #   drop:
+    #   - ALL
+    # readOnlyRootFilesystem: true
+    # runAsNonRoot: true
+    # runAsUser: 1000
+  
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+
+
+

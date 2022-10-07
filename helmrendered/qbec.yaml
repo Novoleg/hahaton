@@ -1,0 +1,28 @@
+apiVersion: qbec.io/v1alpha1
+kind: App
+metadata:
+  name: helmrendered
+spec:
+  environments:
+    base:
+      defaultNamespace: test
+      server: https://192.168.3.163:6443
+    default:
+      defaultNamespace: test
+      server: https://192.168.3.163:6443
+  vars:
+    computed:
+      - name: novolegStateless
+        code: |
+          {
+            local p = (import './params.libsonnet').components.novolegStateless,
+            command: 'sh',
+            args: [
+              '-c',
+              ('/opt/homebrew/bin/helm template "${__DS_NAME__}" "${__DS_PATH__}" -n test -f-')
+            ],
+            stdin: std.manifestJson(p.values),
+          }
+  dataSources:
+    - exec://novoleg-stateless?configVar=novolegStateless
+

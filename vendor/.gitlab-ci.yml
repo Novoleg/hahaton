@@ -1,0 +1,3 @@
+include:
+  - project: 'novoleg-devops/gitlab-ci-base'
+    file: '/base/package.yml'
