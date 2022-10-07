@@ -6,10 +6,7 @@ spec:
   environments:
     base:
       defaultNamespace: test
-      server: https://192.168.3.163:6443
-    default:
-      defaultNamespace: test
-      server: https://192.168.3.163:6443
+      server: https://130.193.34.162:6443
   vars:
     computed:
       - name: novolegStateless

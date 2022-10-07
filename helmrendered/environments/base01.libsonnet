@@ -4,7 +4,7 @@ local utils = import '../utils/utils.libsonnet';
   components: {
     novolegStateless: {
       values: {
-        fullnameOverride: "dep-base",
+        fullnameOverride: "dep-base01",
         deployments: {
           replicaCount: 1,
           containers: [
@@ -30,3 +30,4 @@ local utils = import '../utils/utils.libsonnet';
     },
   },
 }
+
