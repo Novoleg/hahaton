@@ -1,11 +1,11 @@
 {
-  container(containerName,imageRepository, imageTag)::
+  image(registry, image, tag)::
   {
-    name: containerName,
-    image:{
-      repository: imageRepository,
-      tag: imageTag,
-    }
+    image: {
+      registry: registry,
+      image: image,
+      tag: tag
+    },
   }
 }
 

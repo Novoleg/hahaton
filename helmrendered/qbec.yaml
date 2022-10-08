@@ -1,21 +1,27 @@
 apiVersion: qbec.io/v1alpha1
 kind: App
 metadata:
-  name: helmrendered
+  name: ingress-nginx
 spec:
   environments:
-    base:
-      defaultNamespace: test
+    dev01:
+      defaultNamespace: dev
       server: https://130.193.34.162:6443
-    base01:
-      defaultNamespace: test
+    dev02:
+      defaultNamespace: dev
       server: https://130.193.34.162:6443
+    prod01:
+      defaultNamespace: prod
+      server: https://51.250.17.75:6443
+    prod02:
+      defaultNamespace: prod
+      server: https://51.250.17.75:6443
   vars:
     computed:
-      - name: novolegStateless
+      - name: ingressNginx
         code: |
           {
-            local p = (import './params.libsonnet').components.novolegStateless,
+            local p = (import './params.libsonnet').components.ingressNginx,
             command: 'sh',
             args: [
               '-c',
@@ -24,5 +30,5 @@ spec:
             stdin: std.manifestJson(p.values),
           }
   dataSources:
-    - exec://novoleg-stateless?configVar=novolegStateless
+    - exec://ingress-nginx?configVar=ingressNginx
 
