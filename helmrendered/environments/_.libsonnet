@@ -26,7 +26,7 @@ local image = import '../utils/utils.libsonnet';
             }
           },
           containerName: "controller",
-          hostNetwork: false,
+          hostNetwork: true,
         }
       }
     }
