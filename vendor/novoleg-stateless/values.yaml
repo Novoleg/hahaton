@@ -1,3 +1,4 @@
+fullnameOverride: fdsfsd
 # описание deployment
 deployments:
   replicaCount: 1

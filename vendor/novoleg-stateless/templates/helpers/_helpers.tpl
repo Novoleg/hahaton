@@ -46,7 +46,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 Selector labels
 */}}
 {{- define "novoleg-stateless.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "novoleg-stateless.name" . }}
+app.kubernetes.io/name: {{ include "novoleg-stateless.fullname" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 

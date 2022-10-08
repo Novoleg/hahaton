@@ -5,7 +5,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "novoleg-stateless.fullname" . }}
+  name: {{ include "novoleg-stateless.fullname" . }}-dep
   labels:
     {{- include "novoleg-stateless.labels" . | nindent 4 }}
 spec:

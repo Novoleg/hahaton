@@ -1,5 +1,3 @@
-local utils = import '../utils/utils.libsonnet';
-
 {
   components: {
     novolegStateless: {
