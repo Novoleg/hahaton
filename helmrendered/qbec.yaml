@@ -7,18 +7,9 @@ spec:
     dev:
       defaultNamespace: dev
       server: https://130.193.34.162:6443
-    # dev01:
-    #   defaultNamespace: dev
-    #   server: https://130.193.34.162:6443
-    # dev02:
-    #   defaultNamespace: dev
-    #   server: https://130.193.34.162:6443
-    # prod01:
-    #   defaultNamespace: prod
-    #   server: https://51.250.17.75:6443
-    # prod02:
-    #   defaultNamespace: prod
-    #   server: https://51.250.17.75:6443
+    prod:
+      defaultNamespace: prod
+      server: https://51.250.17.75:6443
   vars:
     computed:
       - name: ingressNginx
