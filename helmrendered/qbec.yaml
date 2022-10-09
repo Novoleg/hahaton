@@ -34,4 +34,5 @@ spec:
           }
   dataSources:
     - exec://ingress-nginx?configVar=ingressNginx
+  namespaceTagSuffix: true
 
